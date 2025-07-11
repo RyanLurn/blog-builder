@@ -6,21 +6,21 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export const metadata: Metadata = {
   title: "Shadcn Next",
-  description: "App template with Shadcn UI and Next.js",
+  description: "App template with Shadcn UI and Next.js"
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
