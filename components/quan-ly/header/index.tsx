@@ -1,4 +1,4 @@
-import Navbar from "@/components/admin/header/navbar";
+import Navbar from "@/components/quan-ly/header/navbar";
 import { UserButton } from "@clerk/nextjs";
 
 export default function Header() {

@@ -1,4 +1,4 @@
-import Header from "@/components/admin/header";
+import Header from "@/components/quan-ly/header";
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function QuanLyLayout({
