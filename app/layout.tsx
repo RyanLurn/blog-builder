@@ -5,6 +5,14 @@ import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Toaster } from "@/components/ui/sonner";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,24 +35,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <ReactScanner />
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <ReactScanner />
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <div className="fixed top-2 right-2">
-            <ModeToggle />
-          </div>
-          {children}
-          <Toaster position="top-center" richColors closeButton />
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <header className="flex h-16 items-center justify-end gap-4 p-4">
+              <SignedOut>
+                <SignInButton />
+                <SignUpButton>
+                  <button className="h-10 cursor-pointer rounded-full bg-[#6c47ff] px-4 text-sm font-medium text-white sm:h-12 sm:px-5 sm:text-base">
+                    Sign Up
+                  </button>
+                </SignUpButton>
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </header>
+            <div className="fixed right-2 bottom-2">
+              <ModeToggle />
+            </div>
+            {children}
+            <Toaster position="top-center" richColors closeButton />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
