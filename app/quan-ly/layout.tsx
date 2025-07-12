@@ -14,9 +14,9 @@ export default function QuanLyLayout({
         </div>
       </SignedOut>
       <SignedIn>
-        <div className="h-screen w-screen overflow-y-auto">
+        <div className="flex h-screen w-screen flex-col overflow-y-auto">
           <Header />
-          {children}
+          <div className="flex-1">{children}</div>
         </div>
       </SignedIn>
     </>
